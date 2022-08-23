@@ -1,4 +1,4 @@
-# Basic-Amazon-Clone# Basic Amazon clone
+# Basic-Amazon-Clone
 
 Home page, basket and orders.
 
