@@ -26,7 +26,6 @@ function Basket() {
 
     if (items.length === 0) return;
 
-    console.log("ALOO");
     setLoading(true);
 
     try {
