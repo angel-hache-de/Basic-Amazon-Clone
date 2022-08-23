@@ -22,6 +22,7 @@ function Basket() {
   const total = useSelector(selectTotal);
 
   const saveOrder = async () => {
+    if(!session) return alert("Sign-in");
     setLoading(true);
 
     try {
@@ -32,7 +33,7 @@ function Basket() {
       });
 
       dispatch(clearBasket());
-      router.push("/orders");
+      router.push("/success");
     } catch (error) {
       setLoading(false);
       alert(error.message);
