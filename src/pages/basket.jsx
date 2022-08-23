@@ -22,14 +22,18 @@ function Basket() {
   const total = useSelector(selectTotal);
 
   const saveOrder = async () => {
-    if(!session) return alert("Sign-in");
+    if (!session) return alert("Sign-in");
+
+    if (items.length === 0) return;
+
+    console.log("ALOO");
     setLoading(true);
 
     try {
-      await addDoc(collection(db, 'users', session.user.email, "orders"), {
+      await addDoc(collection(db, "users", session.user.email, "orders"), {
         amount: total,
         items,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
       });
 
       dispatch(clearBasket());
@@ -124,9 +128,8 @@ function Basket() {
                 onClick={saveOrder}
                 disabled={!session || loading}
                 className={`button mt-2 ${
-                  !session ||
-                  (loading &&
-                    "from-gray-300 to-gray-500 border-gray-200 text-gray-300")
+                  (!session || loading) &&
+                  "from-gray-300 to-gray-500 border-gray-200 text-gray-300"
                 }`}
               >
                 {!session
